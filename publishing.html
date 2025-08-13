@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نویسندگی و انتشار کتاب - پنل مدیریت کسب‌وکار</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Desktop Sidebar -->
+        <nav class="sidebar d-none d-md-block">
+            <div class="sidebar-header">
+                <h4><i class="fas fa-rocket me-2"></i>پنل کسب‌وکار</h4>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>داشبورد</a></li>
+                <li><a href="website-creation.html"><i class="fas fa-globe"></i>ایجاد سایت</a></li>
+                <li><a href="advertising.html"><i class="fas fa-dollar-sign"></i>تبلیغات</a></li>
+                <li><a href="marketing.html"><i class="fas fa-chart-line"></i>بازاریابی</a></li>
+                <li><a href="affiliate.html"><i class="fas fa-users"></i>زیرمجموعه‌گیری</a></li>
+                <li><a href="publishing.html" class="active"><i class="fas fa-book"></i>انتشار کتاب</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i>پروفایل</a></li>
+                <li><a href="support.html"><i class="fas fa-headset"></i>پشتیبانی</a></li>
+                <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>خروج</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-nav d-md-none">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>خانه</span>
+            </a>
+            <a href="website-creation.html" class="nav-item">
+                <i class="fas fa-globe"></i>
+                <span>سایت</span>
+            </a>
+            <a href="marketing.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>بازاریابی</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>پروفایل</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showMobileMenu()">
+                <i class="fas fa-bars"></i>
+                <span>منو</span>
+            </a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header mb-4">
+                <h2><i class="fas fa-book me-2"></i>نویسندگی و انتشار کتاب</h2>
+                <p class="text-muted">انتشار کتاب‌های دیجیتال و چاپی</p>
+            </header>
+
+            <!-- Writing Guide -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>راهنمای نویسندگی</h5>
+                </div>
+                <div class="card-body">
+                    <div class="writing-guide">
+                        <div class="guide-section">
+                            <h6><i class="fas fa-lightbulb me-2"></i>نکات مهم نوشتن کتاب</h6>
+                            <ul class="guide-list">
+                                <li>قبل از شروع، طرح کلی کتاب را تهیه کنید</li>
+                                <li>مخاطب هدف خود را مشخص کنید</li>
+                                <li>هر روز مقدار مشخصی بنویسید</li>
+                                <li>از زبان ساده و روان استفاده کنید</li>
+                                <li>کتاب را چندین بار ویرایش کنید</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h6><i class="fas fa-file-word me-2"></i>نوشتن در Microsoft Word</h6>
+                            <ul class="guide-list">
+                                <li>از فونت مناسب استفاده کنید (Tahoma یا B Nazanin)</li>
+                                <li>اندازه فونت ۱۲ تا ۱۴ انتخاب کنید</li>
+                                <li>فاصله خطوط را ۱.۵ یا ۲ تنظیم کنید</li>
+                                <li>حاشیه‌های صفحه را ۲.۵ سانتی‌متر قرار دهید</li>
+                                <li>از سرفصل‌ها و شماره‌گذاری صفحات استفاده کنید</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h6><i class="fas fa-print me-2"></i>فرمت مناسب برای انتشار</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="format-card">
+                                        <h6>انتشار دیجیتال</h6>
+                                        <ul>
+                                            <li>فرمت PDF با کیفیت بالا</li>
+                                            <li>اندازه فایل کمتر از ۲۰ مگابایت</li>
+                                            <li>قابلیت جستجو در متن</li>
+                                            <li>فهرست قابل کلیک</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="format-card">
+                                        <h6>انتشار چاپی</h6>
+                                        <ul>
+                                            <li>فرمت A5 یا A4</li>
+                                            <li>رزولوشن ۳۰۰ DPI</li>
+                                            <li>طراحی جلد حرفه‌ای</li>
+                                            <li>شابک (ISBN) اختیاری</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Submission Form -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>ثبت کتاب جدید</h5>
+                </div>
+                <div class="card-body">
+                    <form id="publishingForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">عنوان کتاب</label>
+                                <input type="text" class="form-control" id="bookTitle" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">نام نویسنده</label>
+                                <input type="text" class="form-control" id="authorName" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">توضیحات کتاب</label>
+                                <textarea class="form-control" id="bookDescription" rows="4" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">دسته‌بندی</label>
+                                <select class="form-select" id="bookCategory" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="novel">رمان</option>
+                                    <option value="poetry">شعر</option>
+                                    <option value="business">کسب‌وکار</option>
+                                    <option value="self-help">خودیاری</option>
+                                    <option value="academic">علمی</option>
+                                    <option value="children">کودک</option>
+                                    <option value="history">تاریخ</option>
+                                    <option value="religion">مذهبی</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">زبان کتاب</label>
+                                <select class="form-select" id="bookLanguage" required>
+                                    <option value="fa">فارسی</option>
+                                    <option value="en">انگلیسی</option>
+                                    <option value="ar">عربی</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">تعداد صفحات (تقریبی)</label>
+                                <input type="number" class="form-control" id="pageCount" min="1">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">نوع انتشار</label>
+                                <select class="form-select" id="publishType" required>
+                                    <option value="digital">دیجیتال</option>
+                                    <option value="print">چاپی</option>
+                                    <option value="both">هر دو</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">آپلود فایل کتاب</label>
+                                <input type="file" class="form-control" id="bookFile" accept=".pdf,.doc,.docx" required>
+                                <small class="form-text text-muted">فرمت‌های مجاز: PDF, Word (حداکثر ۵۰MB)</small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">آپلود طرح جلد (اختیاری)</label>
+                                <input type="file" class="form-control" id="coverImage" accept="image/*">
+                                <small class="form-text text-muted">در صورت نداشتن طرح جلد، ما برای شما طراحی می‌کنیم</small>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-upload me-2"></i>ثبت کتاب
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- My Books -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>کتاب‌های من</h5>
+                </div>
+                <div class="card-body">
+                    <div id="myBooks">
+                        <!-- Books list will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Check authentication
+        if (!Auth.isLoggedIn()) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('publishingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                title: document.getElementById('bookTitle').value,
+                author: document.getElementById('authorName').value,
+                description: document.getElementById('bookDescription').value,
+                category: document.getElementById('bookCategory').value,
+                language: document.getElementById('bookLanguage').value,
+                pageCount: document.getElementById('pageCount').value,
+                publishType: document.getElementById('publishType').value,
+                submittedAt: new Date().toLocaleDateString('fa-IR'),
+                status: 'در انتظار بررسی'
+            };
+
+            // Save to storage
+            let books = Storage.get('userBooks') || [];
+            books.push(formData);
+            Storage.set('userBooks', books);
+
+            // Add to recent activity
+            App.addActivity('fas fa-book', `کتاب "${formData.title}" برای بررسی ارسال شد`);
+
+            alert('کتاب شما با موفقیت ثبت شد و برای بررسی ارسال گردید');
+            loadMyBooks();
+            this.reset();
+        });
+
+        function loadMyBooks() {
+            const books = Storage.get('userBooks') || [];
+            const container = document.getElementById('myBooks');
+
+            if (books.length === 0) {
+                container.innerHTML = '<p class="text-muted text-center">هنوز هیچ کتابی ثبت نکرده‌اید</p>';
+                return;
+            }
+
+            container.innerHTML = books.map(book => `
+                <div class="book-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6>${book.title}</h6>
+                            <p class="text-muted mb-1">نویسنده: ${book.author}</p>
+                            <p class="text-muted mb-1">${book.description.substring(0, 100)}...</p>
+                            <div class="book-meta">
+                                <span class="badge bg-info me-2">${getCategoryLabel(book.category)}</span>
+                                <span class="badge bg-secondary me-2">${getPublishTypeLabel(book.publishType)}</span>
+                                <small class="text-muted">${book.pageCount} صفحه</small>
+                            </div>
+                            <small class="text-muted">تاریخ ثبت: ${book.submittedAt}</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-warning">${book.status}</span>
+                            <div class="mt-2">
+                                <button class="btn btn-sm btn-outline-primary" onclick="viewBook('${book.title}')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'novel': 'رمان',
+                'poetry': 'شعر',
+                'business': 'کسب‌وکار',
+                'self-help': 'خودیاری',
+                'academic': 'علمی',
+                'children': 'کودک',
+                'history': 'تاریخ',
+                'religion': 'مذهبی'
+            };
+            return labels[category] || category;
+        }
+
+        function getPublishTypeLabel(type) {
+            const labels = {
+                'digital': 'دیجیتال',
+                'print': 'چاپی',
+                'both': 'هر دو'
+            };
+            return labels[type] || type;
+        }
+
+        function viewBook(title) {
+            alert(`نمایش جزئیات کتاب: ${title}`);
+        }
+
+        // Load existing books on page load
+        document.addEventListener('DOMContentLoaded', loadMyBooks);
+
+        function logout() {
+            Auth.logout();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

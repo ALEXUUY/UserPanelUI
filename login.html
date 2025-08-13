@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود - پنل مدیریت کسب‌وکار</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2><i class="fas fa-rocket me-2"></i>ورود به حساب</h2>
+                <p>به پنل مدیریت کسب‌وکار خوش آمدید</p>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <div class="mb-3">
+                    <label class="form-label">ایمیل</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">رمز عبور</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" id="password" required>
+                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('password')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">مرا به خاطر بسپار</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mb-3">
+                    <i class="fas fa-sign-in-alt me-2"></i>ورود
+                </button>
+
+                <div class="divider">
+                    <span>یا</span>
+                </div>
+
+                <button type="button" class="btn btn-google w-100 mb-3" onclick="loginWithGoogle()">
+                    <i class="fab fa-google me-2"></i>ورود با گوگل
+                </button>
+
+                <div class="auth-links">
+                    <a href="#" class="forgot-password">رمز عبور را فراموش کرده‌اید؟</a>
+                </div>
+            </form>
+
+            <div class="auth-footer">
+                <p>حساب کاربری ندارید؟ <a href="register.html">ثبت‌نام کنید</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade" id="errorAlert" role="alert">
+        <span id="errorMessage"></span>
+        <button type="button" class="btn-close" onclick="hideAlert()"></button>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Redirect if already logged in
+        if (Auth.isLoggedIn()) {
+            window.location.href = 'dashboard.html';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (Auth.login(email, password)) {
+                window.location.href = 'dashboard.html';
+            } else {
+                showError('ایمیل یا رمز عبور اشتباه است');
+            }
+        });
+
+        function loginWithGoogle() {
+            // Simulate Google login
+            const googleUser = {
+                email: 'user@gmail.com',
+                name: 'کاربر گوگل',
+                profile_image: null
+            };
+            
+            if (Auth.loginWithGoogle(googleUser)) {
+                window.location.href = 'business-selection.html';
+            }
+        }
+
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorAlert').classList.add('show');
+        }
+
+        function hideAlert() {
+            document.getElementById('errorAlert').classList.remove('show');
+        }
+    </script>
+</body>
+</html>

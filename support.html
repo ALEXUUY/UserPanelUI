@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پشتیبانی - پنل مدیریت کسب‌وکار</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Desktop Sidebar -->
+        <nav class="sidebar d-none d-md-block">
+            <div class="sidebar-header">
+                <h4><i class="fas fa-rocket me-2"></i>پنل کسب‌وکار</h4>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>داشبورد</a></li>
+                <li><a href="website-creation.html"><i class="fas fa-globe"></i>ایجاد سایت</a></li>
+                <li><a href="advertising.html"><i class="fas fa-dollar-sign"></i>تبلیغات</a></li>
+                <li><a href="marketing.html"><i class="fas fa-chart-line"></i>بازاریابی</a></li>
+                <li><a href="affiliate.html"><i class="fas fa-users"></i>زیرمجموعه‌گیری</a></li>
+                <li><a href="publishing.html"><i class="fas fa-book"></i>انتشار کتاب</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i>پروفایل</a></li>
+                <li><a href="support.html" class="active"><i class="fas fa-headset"></i>پشتیبانی</a></li>
+                <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>خروج</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-nav d-md-none">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>خانه</span>
+            </a>
+            <a href="website-creation.html" class="nav-item">
+                <i class="fas fa-globe"></i>
+                <span>سایت</span>
+            </a>
+            <a href="marketing.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>بازاریابی</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>پروفایل</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showMobileMenu()">
+                <i class="fas fa-bars"></i>
+                <span>منو</span>
+            </a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header mb-4">
+                <h2><i class="fas fa-headset me-2"></i>مرکز پشتیبانی</h2>
+                <p class="text-muted">ارتباط با تیم پشتیبانی و مشاهده تیکت‌ها</p>
+            </header>
+
+            <!-- Quick Support -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="support-card" onclick="createTicket('technical')">
+                        <i class="fas fa-tools"></i>
+                        <h6>مشکل فنی</h6>
+                        <p>مشکلات مربوط به عملکرد سیستم</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="support-card" onclick="createTicket('payment')">
+                        <i class="fas fa-credit-card"></i>
+                        <h6>مشکل پرداخت</h6>
+                        <p>مسائل مربوط به تراکنش‌ها</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="support-card" onclick="createTicket('account')">
+                        <i class="fas fa-user-cog"></i>
+                        <h6>مدیریت حساب</h6>
+                        <p>تغییرات در اطلاعات کاربری</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="support-card" onclick="createTicket('general')">
+                        <i class="fas fa-question-circle"></i>
+                        <h6>سوال عمومی</h6>
+                        <p>راهنمایی و مشاوره کلی</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Methods -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>راه‌های ارتباطی</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h6>تماس تلفنی</h6>
+                                    <p class="text-muted mb-1">۰۲۱-۱۲۳۴۵۶۷۸</p>
+                                    <small class="text-success">شنبه تا پنج‌شنبه، ۹ الی ۱۸</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h6>واتساپ</h6>
+                                    <p class="text-muted mb-1">۰۹۱۲۳۴۵۶۷۸۹</p>
+                                    <small class="text-success">۲۴ ساعته</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h6>ایمیل</h6>
+                                    <p class="text-muted mb-1">support@businesspanel.com</p>
+                                    <small class="text-success">پاسخ در کمتر از ۲۴ ساعت</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fab fa-telegram"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <h6>تلگرام</h6>
+                                    <p class="text-muted mb-1">@BusinessPanelSupport</p>
+                                    <small class="text-success">پاسخ سریع</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Ticket Form -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>ارسال تیکت جدید</h5>
+                </div>
+                <div class="card-body">
+                    <form id="ticketForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">موضوع</label>
+                                <input type="text" class="form-control" id="ticketSubject" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">اولویت</label>
+                                <select class="form-select" id="ticketPriority" required>
+                                    <option value="low">کم</option>
+                                    <option value="medium" selected>متوسط</option>
+                                    <option value="high">بالا</option>
+                                    <option value="urgent">فوری</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">دسته‌بندی</label>
+                                <select class="form-select" id="ticketCategory" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="technical">مشکل فنی</option>
+                                    <option value="payment">مشکل پرداخت</option>
+                                    <option value="account">مدیریت حساب</option>
+                                    <option value="billing">صورت‌حساب</option>
+                                    <option value="feature">درخواست قابلیت</option>
+                                    <option value="general">عمومی</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">بخش مربوطه</label>
+                                <select class="form-select" id="ticketDepartment">
+                                    <option value="website">ایجاد سایت</option>
+                                    <option value="advertising">تبلیغات</option>
+                                    <option value="marketing">بازاریابی</option>
+                                    <option value="affiliate">زیرمجموعه‌گیری</option>
+                                    <option value="publishing">انتشار کتاب</option>
+                                    <option value="general">عمومی</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">شرح مشکل یا درخواست</label>
+                                <textarea class="form-control" id="ticketMessage" rows="5" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">ضمیمه فایل (اختیاری)</label>
+                                <input type="file" class="form-control" id="ticketAttachment" multiple>
+                                <small class="form-text text-muted">حداکثر ۱۰ مگابایت - فرمت‌های مجاز: jpg, png, pdf, doc</small>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>ارسال تیکت
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- My Tickets -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>تیکت‌های من</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>شماره تیکت</th>
+                                    <th>موضوع</th>
+                                    <th>دسته‌بندی</th>
+                                    <th>اولویت</th>
+                                    <th>وضعیت</th>
+                                    <th>تاریخ ایجاد</th>
+                                    <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ticketsList">
+                                <!-- Tickets will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Ticket Detail Modal -->
+    <div class="modal fade" id="ticketDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">جزئیات تیکت</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="ticketDetailContent">
+                        <!-- Ticket detail will be loaded here -->
+                    </div>
+                    
+                    <!-- Reply Form -->
+                    <hr>
+                    <form id="replyForm">
+                        <div class="mb-3">
+                            <label class="form-label">پاسخ شما</label>
+                            <textarea class="form-control" id="replyMessage" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-reply me-2"></i>ارسال پاسخ
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>سوالات متداول</h5>
+        </div>
+        <div class="card-body">
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            چگونه می‌توانم سایت خود را ایجاد کنم؟
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            برای ایجاد سایت، از منوی سمت راست بخش "ایجاد سایت" را انتخاب کنید و فرم مربوطه را تکمیل کنید.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            چگونه می‌توانم پرداخت کنم؟
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            دو روش پرداخت آنلاین و کارت به کارت در دسترس است. برای کارت به کارت، اطلاعات حساب نمایش داده می‌شود.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            زیرمجموعه‌گیری چگونه کار می‌کند؟
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            با اشتراک‌گذاری لینک اختصاصی خود، از هر فروش زیرمجموعه‌ها کمیسیون دریافت می‌کنید.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Check authentication
+        if (!Auth.isLoggedIn()) {
+            window.location.href = 'login.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMyTickets();
+        });
+
+        function createTicket(category) {
+            document.getElementById('ticketCategory').value = category;
+            document.getElementById('ticketSubject').focus();
+        }
+
+        document.getElementById('ticketForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const user = Auth.getCurrentUser();
+            const ticketNumber = 'TK' + Date.now().toString().slice(-6);
+            
+            const ticketData = {
+                number: ticketNumber,
+                subject: document.getElementById('ticketSubject').value,
+                priority: document.getElementById('ticketPriority').value,
+                category: document.getElementById('ticketCategory').value,
+                department: document.getElementById('ticketDepartment').value,
+                message: document.getElementById('ticketMessage').value,
+                userId: user.email,
+                status: 'باز',
+                createdAt: new Date().toLocaleDateString('fa-IR'),
+                messages: [
+                    {
+                        sender: user.name,
+                        message: document.getElementById('ticketMessage').value,
+                        timestamp: new Date().toLocaleString('fa-IR'),
+                        isAdmin: false
+                    }
+                ]
+            };
+
+            // Save to storage
+            let tickets = Storage.get('userTickets') || [];
+            tickets.push(ticketData);
+            Storage.set('userTickets', tickets);
+
+            // Add to recent activity
+            App.addActivity('fas fa-headset', `تیکت "${ticketData.subject}" ایجاد شد`);
+
+            alert(`تیکت شما با شماره ${ticketNumber} ثبت شد`);
+            loadMyTickets();
+            this.reset();
+        });
+
+        function loadMyTickets() {
+            const tickets = Storage.get('userTickets') || [];
+            const tbody = document.getElementById('ticketsList');
+
+            if (tickets.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted">هیچ تیکتی ثبت نشده است</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = tickets.map(ticket => `
+                <tr>
+                    <td>#${ticket.number}</td>
+                    <td>${ticket.subject}</td>
+                    <td>${getCategoryLabel(ticket.category)}</td>
+                    <td><span class="badge bg-${getPriorityColor(ticket.priority)}">${getPriorityLabel(ticket.priority)}</span></td>
+                    <td><span class="badge bg-${getStatusColor(ticket.status)}">${ticket.status}</span></td>
+                    <td>${ticket.createdAt}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" onclick="viewTicket('${ticket.number}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                'technical': 'فنی',
+                'payment': 'پرداخت',
+                'account': 'حساب کاربری',
+                'billing': 'صورت‌حساب',
+                'feature': 'قابلیت',
+                'general': 'عمومی'
+            };
+            return labels[category] || category;
+        }
+
+        function getPriorityLabel(priority) {
+            const labels = {
+                'low': 'کم',
+                'medium': 'متوسط',
+                'high': 'بالا',
+                'urgent': 'فوری'
+            };
+            return labels[priority] || priority;
+        }
+
+        function getPriorityColor(priority) {
+            const colors = {
+                'low': 'secondary',
+                'medium': 'info',
+                'high': 'warning',
+                'urgent': 'danger'
+            };
+            return colors[priority] || 'secondary';
+        }
+
+        function getStatusColor(status) {
+            const colors = {
+                'باز': 'success',
+                'در حال بررسی': 'warning',
+                'پاسخ داده شده': 'info',
+                'بسته': 'secondary'
+            };
+            return colors[status] || 'secondary';
+        }
+
+        function viewTicket(ticketNumber) {
+            const tickets = Storage.get('userTickets') || [];
+            const ticket = tickets.find(t => t.number === ticketNumber);
+            
+            if (!ticket) return;
+
+            const content = `
+                <div class="ticket-header">
+                    <h6>تیکت #${ticket.number}</h6>
+                    <p><strong>موضوع:</strong> ${ticket.subject}</p>
+                    <p><strong>وضعیت:</strong> <span class="badge bg-${getStatusColor(ticket.status)}">${ticket.status}</span></p>
+                </div>
+                <hr>
+                <div class="ticket-messages">
+                    ${ticket.messages.map(msg => `
+                        <div class="message ${msg.isAdmin ? 'admin-message' : 'user-message'}">
+                            <div class="message-header">
+                                <strong>${msg.sender}</strong>
+                                <small class="text-muted">${msg.timestamp}</small>
+                            </div>
+                            <div class="message-body">${msg.message}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('ticketDetailContent').innerHTML = content;
+            new bootstrap.Modal(document.getElementById('ticketDetailModal')).show();
+
+            // Store current ticket number for reply
+            document.getElementById('replyForm').dataset.ticketNumber = ticketNumber;
+        }
+
+        document.getElementById('replyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const ticketNumber = this.dataset.ticketNumber;
+            const replyMessage = document.getElementById('replyMessage').value;
+            const user = Auth.getCurrentUser();
+
+            // Find and update ticket
+            let tickets = Storage.get('userTickets') || [];
+            const ticketIndex = tickets.findIndex(t => t.number === ticketNumber);
+            
+            if (ticketIndex !== -1) {
+                tickets[ticketIndex].messages.push({
+                    sender: user.name,
+                    message: replyMessage,
+                    timestamp: new Date().toLocaleString('fa-IR'),
+                    isAdmin: false
+                });
+                
+                Storage.set('userTickets', tickets);
+                
+                alert('پاسخ شما ارسال شد');
+                bootstrap.Modal.getInstance(document.getElementById('ticketDetailModal')).hide();
+                this.reset();
+            }
+        });
+
+        function logout() {
+            Auth.logout();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

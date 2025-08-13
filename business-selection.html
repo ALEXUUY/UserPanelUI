@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انتخاب نوع کسب‌وکار</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="business-selection-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="selection-header text-center mb-5">
+                        <h1 class="display-5 mb-3">چه کسب‌وکاری می‌خواهید ایجاد کنید؟</h1>
+                        <p class="lead">یکی از گزینه‌های زیر را انتخاب کنید یا بعداً تصمیم بگیرید</p>
+                    </div>
+
+                    <div class="business-options">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="business-card" onclick="selectBusiness('website')">
+                                    <div class="business-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div class="business-info">
+                                        <h4>ایجاد سایت</h4>
+                                        <p>طراحی و توسعه سایت حرفه‌ای</p>
+                                        <span class="price">۴۷۰ هزار تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="business-card" onclick="selectBusiness('advertising')">
+                                    <div class="business-icon">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                    <div class="business-info">
+                                        <h4>تبلیغات و درآمد دلاری</h4>
+                                        <p>کمپین‌های تبلیغاتی هدفمند</p>
+                                        <span class="price">۴۷۰ هزار تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="business-card" onclick="selectBusiness('marketing')">
+                                    <div class="business-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="business-info">
+                                        <h4>بازاریابی</h4>
+                                        <p>استراتژی‌های بازاریابی دیجیتال</p>
+                                        <span class="price free">رایگان</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="business-card" onclick="selectBusiness('affiliate')">
+                                    <div class="business-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="business-info">
+                                        <h4>زیرمجموعه‌گیری</h4>
+                                        <p>ایجاد شبکه فروش</p>
+                                        <span class="price free">رایگان</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="business-card" onclick="selectBusiness('publishing')">
+                                    <div class="business-icon">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <div class="business-info">
+                                        <h4>نویسندگی و انتشار کتاب</h4>
+                                        <p>انتشار کتاب دیجیتال و چاپی</p>
+                                        <span class="price free">رایگان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="selection-footer text-center mt-5">
+                        <button class="btn btn-outline-secondary me-3" onclick="skipSelection()">
+                            بعداً انتخاب می‌کنم
+                        </button>
+                        <a href="dashboard.html" class="btn btn-primary">
+                            رفتن به داشبورد
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Check if user is logged in
+        if (!Auth.isLoggedIn()) {
+            window.location.href = 'login.html';
+        }
+
+        function selectBusiness(type) {
+            const businessPages = {
+                website: 'website-creation.html',
+                advertising: 'advertising.html',
+                marketing: 'marketing.html',
+                affiliate: 'affiliate.html',
+                publishing: 'publishing.html'
+            };
+
+            // Save selected business type
+            Storage.set('selectedBusiness', type);
+            
+            // Redirect to appropriate page
+            window.location.href = businessPages[type];
+        }
+
+        function skipSelection() {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>

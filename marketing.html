@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازاریابی - پنل مدیریت کسب‌وکار</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Desktop Sidebar -->
+        <nav class="sidebar d-none d-md-block">
+            <div class="sidebar-header">
+                <h4><i class="fas fa-rocket me-2"></i>پنل کسب‌وکار</h4>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>داشبورد</a></li>
+                <li><a href="website-creation.html"><i class="fas fa-globe"></i>ایجاد سایت</a></li>
+                <li><a href="advertising.html"><i class="fas fa-dollar-sign"></i>تبلیغات</a></li>
+                <li><a href="marketing.html" class="active"><i class="fas fa-chart-line"></i>بازاریابی</a></li>
+                <li><a href="affiliate.html"><i class="fas fa-users"></i>زیرمجموعه‌گیری</a></li>
+                <li><a href="publishing.html"><i class="fas fa-book"></i>انتشار کتاب</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i>پروفایل</a></li>
+                <li><a href="support.html"><i class="fas fa-headset"></i>پشتیبانی</a></li>
+                <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>خروج</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-nav d-md-none">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>خانه</span>
+            </a>
+            <a href="website-creation.html" class="nav-item">
+                <i class="fas fa-globe"></i>
+                <span>سایت</span>
+            </a>
+            <a href="marketing.html" class="nav-item active">
+                <i class="fas fa-chart-line"></i>
+                <span>بازاریابی</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>پروفایل</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showMobileMenu()">
+                <i class="fas fa-bars"></i>
+                <span>منو</span>
+            </a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header mb-4">
+                <h2><i class="fas fa-chart-line me-2"></i>بازاریابی دیجیتال</h2>
+                <p class="text-muted">استراتژی‌های بازاریابی و تحلیل نتایج</p>
+            </header>
+
+            <!-- Marketing Stats -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalViews">0</h3>
+                            <p>بازدید کل</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalClicks">0</h3>
+                            <p>کلیک کل</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="conversionRate">0%</h3>
+                            <p>نرخ تبدیل</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalShares">0</h3>
+                            <p>اشتراک‌گذاری</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketing Campaign Form -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>ایجاد کمپین بازاریابی جدید</h5>
+                </div>
+                <div class="card-body">
+                    <form id="marketingForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">نام کمپین</label>
+                                <input type="text" class="form-control" id="campaignName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">نوع کمپین</label>
+                                <select class="form-select" id="marketingType" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="seo">سئو و بهینه‌سازی</option>
+                                    <option value="content">بازاریابی محتوا</option>
+                                    <option value="social">شبکه‌های اجتماعی</option>
+                                    <option value="email">ایمیل مارکتینگ</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">توضیحات کمپین</label>
+                                <textarea class="form-control" id="campaignDescription" rows="3" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">بودجه (تومان)</label>
+                                <input type="number" class="form-control" id="marketingBudget" min="0">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">مدت زمان (روز)</label>
+                                <input type="number" class="form-control" id="campaignDuration" min="1" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">آپلود محتوا</label>
+                                <input type="file" class="form-control" id="contentUpload" accept="image/*,video/*,.pdf,.doc,.docx" multiple>
+                                <small class="form-text text-muted">محتوای تصویری، ویدئویی یا متنی مربوط به کمپین</small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">کلمات کلیدی</label>
+                                <input type="text" class="form-control" id="keywords" placeholder="کلمات کلیدی را با کاما جدا کنید">
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-rocket me-2"></i>شروع کمپین
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Active Campaigns -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>کمپین‌های فعال</h5>
+                </div>
+                <div class="card-body">
+                    <div id="activeCampaigns">
+                        <!-- Active campaigns will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketing Tools -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>ابزارهای بازاریابی</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="tool-card" onclick="generateQRCode()">
+                                <i class="fas fa-qrcode"></i>
+                                <h6>تولید QR Code</h6>
+                                <p>ایجاد کد QR برای لینک‌ها</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="tool-card" onclick="generateHashtags()">
+                                <i class="fas fa-hashtag"></i>
+                                <h6>تولید هشتگ</h6>
+                                <p>پیشنهاد هشتگ‌های مناسب</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="tool-card" onclick="analyzeCompetitors()">
+                                <i class="fas fa-chart-bar"></i>
+                                <h6>تحلیل رقبا</h6>
+                                <p>بررسی استراتژی رقبا</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="tool-card" onclick="contentCalendar()">
+                                <i class="fas fa-calendar-alt"></i>
+                                <h6>تقویم محتوا</h6>
+                                <p>برنامه‌ریزی انتشار محتوا</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="tool-card" onclick="socialMediaScheduler()">
+                                <i class="fas fa-clock"></i>
+                                <h6>زمان‌بندی پست</h6>
+                                <p>انتشار خودکار در شبکه‌ها</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="tool-card" onclick="performanceReport()">
+                                <i class="fas fa-file-alt"></i>
+                                <h6>گزارش عملکرد</h6>
+                                <p>تحلیل نتایج کمپین‌ها</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Check authentication
+        if (!Auth.isLoggedIn()) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('marketingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('campaignName').value,
+                type: document.getElementById('marketingType').value,
+                description: document.getElementById('campaignDescription').value,
+                budget: document.getElementById('marketingBudget').value,
+                duration: document.getElementById('campaignDuration').value,
+                keywords: document.getElementById('keywords').value,
+                createdAt: new Date().toLocaleDateString('fa-IR'),
+                status: 'فعال'
+            };
+
+            // Save to storage
+            let marketingCampaigns = Storage.get('marketingCampaigns') || [];
+            marketingCampaigns.push(formData);
+            Storage.set('marketingCampaigns', marketingCampaigns);
+
+            // Add to recent activity
+            App.addActivity('fas fa-chart-line', `کمپین بازاریابی "${formData.name}" شروع شد`);
+
+            alert('کمپین بازاریابی با موفقیت ایجاد شد');
+            loadActiveCampaigns();
+            this.reset();
+        });
+
+        function loadActiveCampaigns() {
+            const campaigns = Storage.get('marketingCampaigns') || [];
+            const container = document.getElementById('activeCampaigns');
+
+            if (campaigns.length === 0) {
+                container.innerHTML = '<p class="text-muted text-center">هیچ کمپین فعالی وجود ندارد</p>';
+                return;
+            }
+
+            container.innerHTML = campaigns.map(campaign => `
+                <div class="marketing-campaign-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6>${campaign.name}</h6>
+                            <p class="text-muted mb-1">${campaign.description}</p>
+                            <div class="campaign-meta">
+                                <span class="badge bg-primary me-2">${getMarketingTypeLabel(campaign.type)}</span>
+                                <small class="text-muted">مدت: ${campaign.duration} روز</small>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-success">${campaign.status}</span>
+                            <div class="mt-2">
+                                <small class="text-muted">بودجه: ${campaign.budget ? campaign.budget.toLocaleString() + ' تومان' : 'رایگان'}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getMarketingTypeLabel(type) {
+            const labels = {
+                'seo': 'سئو',
+                'content': 'محتوا',
+                'social': 'شبکه‌های اجتماعی',
+                'email': 'ایمیل مارکتینگ'
+            };
+            return labels[type] || type;
+        }
+
+        function loadMarketingStats() {
+            const stats = Storage.get('marketingStats') || {
+                totalViews: 0,
+                totalClicks: 0,
+                conversionRate: 0,
+                totalShares: 0
+            };
+
+            document.getElementById('totalViews').textContent = stats.totalViews.toLocaleString();
+            document.getElementById('totalClicks').textContent = stats.totalClicks.toLocaleString();
+            document.getElementById('conversionRate').textContent = stats.conversionRate + '%';
+            document.getElementById('totalShares').textContent = stats.totalShares.toLocaleString();
+        }
+
+        // Marketing Tools Functions
+        function generateQRCode() {
+            const url = prompt('لینک مورد نظر را وارد کنید:');
+            if (url) {
+                alert(`QR Code برای لینک ${url} تولید شد`);
+            }
+        }
+
+        function generateHashtags() {
+            const topic = prompt('موضوع را وارد کنید:');
+            if (topic) {
+                const hashtags = ['#کسب_و_کار', '#موفقیت', '#فروش', '#بازاریابی', '#رشد'];
+                alert(`هشتگ‌های پیشنهادی: ${hashtags.join(' ')}`);
+            }
+        }
+
+        function analyzeCompetitors() {
+            alert('ابزار تحلیل رقبا در حال توسعه است');
+        }
+
+        function contentCalendar() {
+            alert('تقویم محتوا در حال توسعه است');
+        }
+
+        function socialMediaScheduler() {
+            alert('زمان‌بند شبکه‌های اجتماعی در حال توسعه است');
+        }
+
+        function performanceReport() {
+            alert('گزارش عملکرد تولید شد');
+        }
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadActiveCampaigns();
+            loadMarketingStats();
+        });
+
+        function logout() {
+            Auth.logout();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

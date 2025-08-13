@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تبلیغات و درآمد دلاری - پنل مدیریت کسب‌وکار</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Desktop Sidebar -->
+        <nav class="sidebar d-none d-md-block">
+            <div class="sidebar-header">
+                <h4><i class="fas fa-rocket me-2"></i>پنل کسب‌وکار</h4>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>داشبورد</a></li>
+                <li><a href="website-creation.html"><i class="fas fa-globe"></i>ایجاد سایت</a></li>
+                <li><a href="advertising.html" class="active"><i class="fas fa-dollar-sign"></i>تبلیغات</a></li>
+                <li><a href="marketing.html"><i class="fas fa-chart-line"></i>بازاریابی</a></li>
+                <li><a href="affiliate.html"><i class="fas fa-users"></i>زیرمجموعه‌گیری</a></li>
+                <li><a href="publishing.html"><i class="fas fa-book"></i>انتشار کتاب</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i>پروفایل</a></li>
+                <li><a href="support.html"><i class="fas fa-headset"></i>پشتیبانی</a></li>
+                <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i>خروج</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-nav d-md-none">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>خانه</span>
+            </a>
+            <a href="website-creation.html" class="nav-item">
+                <i class="fas fa-globe"></i>
+                <span>سایت</span>
+            </a>
+            <a href="marketing.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>بازاریابی</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>پروفایل</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showMobileMenu()">
+                <i class="fas fa-bars"></i>
+                <span>منو</span>
+            </a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header mb-4">
+                <h2><i class="fas fa-dollar-sign me-2"></i>تبلیغات و درآمد دلاری</h2>
+                <p class="text-muted">کمپین‌های تبلیغاتی هدفمند برای کسب درآمد</p>
+            </header>
+
+            <!-- Campaign Creation Form -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>ایجاد کمپین تبلیغاتی جدید</h5>
+                </div>
+                <div class="card-body">
+                    <form id="advertisingForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">عنوان تبلیغ</label>
+                                <input type="text" class="form-control" id="adTitle" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">نوع کمپین</label>
+                                <select class="form-select" id="campaignType" required>
+                                    <option value="">انتخاب کنید</option>
+                                    <option value="google-ads">گوگل ادز</option>
+                                    <option value="facebook-ads">فیسبوک ادز</option>
+                                    <option value="instagram-ads">اینستاگرام ادز</option>
+                                    <option value="youtube-ads">یوتیوب ادز</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">توضیحات کامل</label>
+                                <textarea class="form-control" id="adDescription" rows="4" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">لینک هدف</label>
+                                <input type="url" class="form-control" id="targetUrl" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">بودجه روزانه (دلار)</label>
+                                <input type="number" class="form-control" id="dailyBudget" min="1" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">تاریخ شروع</label>
+                                <input type="date" class="form-control" id="startDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">تاریخ پایان</label>
+                                <input type="date" class="form-control" id="endDate" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">آپلود تصویر/ویدئو</label>
+                                <input type="file" class="form-control" id="mediaUpload" accept="image/*,video/*" multiple>
+                                <small class="form-text text-muted">فرمت‌های مجاز: JPG, PNG, MP4, MOV (حداکثر 10MB)</small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">جمعیت هدف</label>
+                                <div class="row g-2">
+                                    <div class="col-md-4">
+                                        <select class="form-select" id="targetAge">
+                                            <option value="">رده سنی</option>
+                                            <option value="18-24">۱۸-۲۴ سال</option>
+                                            <option value="25-34">۲۵-۳۴ سال</option>
+                                            <option value="35-44">۳۵-۴۴ سال</option>
+                                            <option value="45-54">۴۵-۵۴ سال</option>
+                                            <option value="55+">۵۵+ سال</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select class="form-select" id="targetGender">
+                                            <option value="">جنسیت</option>
+                                            <option value="all">همه</option>
+                                            <option value="male">مرد</option>
+                                            <option value="female">زن</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" id="targetLocation" placeholder="موقعیت جغرافیایی">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Payment Section -->
+                        <div class="payment-section">
+                            <h6 class="mb-3">روش پرداخت - ۴۷۰ هزار تومان</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary w-100" onclick="payOnline()">
+                                        <i class="fas fa-credit-card me-2"></i>پرداخت آنلاین
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-outline-primary w-100" onclick="showBankInfo()">
+                                        <i class="fas fa-university me-2"></i>کارت به کارت
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-rocket me-2"></i>راه‌اندازی کمپین
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- My Campaigns -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>کمپین‌های من</h5>
+                </div>
+                <div class="card-body">
+                    <div id="myCampaigns">
+                        <!-- Campaign list will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bank Info Modal -->
+    <div class="modal fade" id="bankInfoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">اطلاعات پرداخت کارت به کارت</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="bank-info">
+                        <i class="fas fa-university mb-3" style="font-size: 3rem; color: #007bff;"></i>
+                        <h6>شماره کارت:</h6>
+                        <p class="bank-card-number">1234-5678-9012-3456</p>
+                        <h6>نام صاحب حساب:</h6>
+                        <p>شرکت فناوری کسب‌وکار</p>
+                        <h6>مبلغ قابل پرداخت:</h6>
+                        <p class="text-success fs-5">۴۷۰,۰۰۰ تومان</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Check authentication
+        if (!Auth.isLoggedIn()) {
+            window.location.href = 'login.html';
+        }
+
+        function payOnline() {
+            alert('در حال انتقال به درگاه پرداخت...');
+        }
+
+        function showBankInfo() {
+            new bootstrap.Modal(document.getElementById('bankInfoModal')).show();
+        }
+
+        document.getElementById('advertisingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                title: document.getElementById('adTitle').value,
+                type: document.getElementById('campaignType').value,
+                description: document.getElementById('adDescription').value,
+                targetUrl: document.getElementById('targetUrl').value,
+                dailyBudget: document.getElementById('dailyBudget').value,
+                startDate: document.getElementById('startDate').value,
+                endDate: document.getElementById('endDate').value,
+                targetAge: document.getElementById('targetAge').value,
+                targetGender: document.getElementById('targetGender').value,
+                targetLocation: document.getElementById('targetLocation').value,
+                createdAt: new Date().toLocaleDateString('fa-IR'),
+                status: 'در انتظار بررسی'
+            };
+
+            // Save to storage
+            let campaigns = Storage.get('userCampaigns') || [];
+            campaigns.push(formData);
+            Storage.set('userCampaigns', campaigns);
+
+            // Add to recent activity
+            App.addActivity('fas fa-dollar-sign', `کمپین تبلیغاتی "${formData.title}" ایجاد شد`);
+
+            alert('کمپین شما با موفقیت ثبت شد');
+            loadMyCampaigns();
+            this.reset();
+        });
+
+        function loadMyCampaigns() {
+            const campaigns = Storage.get('userCampaigns') || [];
+            const container = document.getElementById('myCampaigns');
+
+            if (campaigns.length === 0) {
+                container.innerHTML = '<p class="text-muted text-center">هنوز هیچ کمپینی ثبت نکرده‌اید</p>';
+                return;
+            }
+
+            container.innerHTML = campaigns.map(campaign => `
+                <div class="campaign-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6>${campaign.title}</h6>
+                            <p class="text-muted mb-1">${campaign.description.substring(0, 100)}...</p>
+                            <div class="campaign-details">
+                                <span class="badge bg-info me-2">${getCampaignTypeLabel(campaign.type)}</span>
+                                <small class="text-muted">بودجه روزانه: $${campaign.dailyBudget}</small>
+                            </div>
+                            <small class="text-muted">تاریخ شروع: ${campaign.startDate}</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-warning">${campaign.status}</span>
+                            <div class="mt-2">
+                                <button class="btn btn-sm btn-outline-primary" onclick="viewCampaign('${campaign.title}')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getCampaignTypeLabel(type) {
+            const labels = {
+                'google-ads': 'گوگل ادز',
+                'facebook-ads': 'فیسبوک ادز',
+                'instagram-ads': 'اینستاگرام ادز',
+                'youtube-ads': 'یوتیوب ادز'
+            };
+            return labels[type] || type;
+        }
+
+        function viewCampaign(title) {
+            alert(`نمایش جزئیات کمپین: ${title}`);
+        }
+
+        // Load existing campaigns on page load
+        document.addEventListener('DOMContentLoaded', loadMyCampaigns);
+
+        function logout() {
+            Auth.logout();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
